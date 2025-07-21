@@ -1,0 +1,19 @@
+[project]
+name = "multimodal-rag-v2"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi[standard]>=0.116.1",
+    "google-generativeai>=0.8.5",
+    "langchain>=0.3.26",
+    "pdf2image>=1.17.0",
+    "pinecone-client>=6.0.0",
+    "pymupdf>=1.26.3",
+    "pytesseract>=0.3.13",
+    "python-dotenv>=1.1.1",
+    "redis>=6.2.0",
+    "ruff>=0.12.4",
+    "tiktoken>=0.9.0",
+]
