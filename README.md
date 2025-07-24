@@ -24,45 +24,52 @@ Built with:
 
 ---
 
-## Project Structure
+## 📁 Project Structure
 
+```bash
 ├── app
-│   ├── api/ # FastAPI routes
-│   │   ├── init.py
+│   ├── api/                  # FastAPI routes
+│   │   ├── __init__.py
 │   │   └── routes.py
-│   ├── core/ # Configuration and chat memory
-│   │   ├── config.py # API keys, model settings
-│   │   ├── memory.py # Memory integration (LangChain)
-│   │   └── init.py
-│   ├── rag/ # Core RAG pipeline
-│   │   ├── chunker.py # Text chunking with sliding window
-│   │   ├── embedding.py # Bengali embedding model setup
-│   │   ├── evaluator.py # Optional: RAG evaluation metrics
-│   │   ├── generator.py # Gemini answer generation logic
-│   │   ├── prompts.py # Custom prompts for Gemini
-│   │   ├── retriver.py # Combines retriever + generator
-│   │   └── init.py
-│   ├── retriver/ # Vector store logic (FAISS)
-│   │   ├── vector_store.py # FAISS index build/load/search
-│   │   └── init.py
-│   ├── utils/ # Text & PDF extraction
-│   │   ├── extractor.py # PDF -> text conversion
-│   │   └── init.py
-│   └── run_preprocess.py # One-time chunking + indexing script
-├── chunks.pkl # Saved document chunks (pickle)
+│   ├── core/                 # Config & memory (LangChain)
+│   │   ├── config.py         # API keys, model configs
+│   │   ├── memory.py         # Memory setup
+│   │   └── __init__.py
+│   ├── rag/                  # Core RAG logic
+│   │   ├── chunker.py        # PDF/text chunking (sliding window)
+│   │   ├── embedding.py      # Embedding setup (Bengali support)
+│   │   ├── evaluator.py      # Optional: Evaluation metrics
+│   │   ├── generator.py      # Gemini-based answer generation
+│   │   ├── prompts.py        # Prompt templates
+│   │   ├── retriver.py       # Combines retrieval & generation
+│   │   └── __init__.py
+│   ├── retriver/             # FAISS-based vector store
+│   │   ├── vector_store.py   # Build / Load / Search
+│   │   └── __init__.py
+│   ├── utils/                # Data preprocessing
+│   │   ├── extractor.py      # Extract text from PDF
+│   │   └── __init__.py
+│   └── run_preprocess.py     # Chunk + Embed + Index PDF
+├── chunks.pkl                # Pickled text chunks
 ├── data/
-│   └── HSC26-Bangla1st-Paper.pdf # Example source document
-├── faiss_index.idx # FAISS index binary
-├── main.py # App entrypoint (FastAPI)
-├── pyproject.toml # Python package & dependency management
-├── uv.lock # uv dependency lock file
-└── README.md # This file
-
+│   └── HSC26-Bangla1st-Paper.pdf # Sample document
+├── faiss_index.idx           # Saved FAISS index
+├── main.py                   # FastAPI app entry point
+├── pyproject.toml            # Python project metadata
+├── uv.lock                   # `uv` dependency lock file
+└── README.md                 # You’re here!
+```
 ---
 
 ## uv installation guideline
 
-- [docs](https://docs.astral.sh/uv
+
+- clone the repo 
+```
+git clone https://github.com/Sagor0078/multimodal-rag-v2.git
+cd multimodal-rag-v2
+```
+- [uv docs](https://docs.astral.sh/uv)
 - Preprocess the PDF (chunks + FAISS index)
 ```bash
 env PYTHONPATH=. uv run python3 app/run_preprocess.py

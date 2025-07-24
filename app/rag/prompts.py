@@ -1,19 +1,19 @@
 from langchain_core.prompts import ChatPromptTemplate
 
 RAG_PROMPT = ChatPromptTemplate.from_template("""
-Use context and conversation history for answer.
-If answer isn't in context, reply "উত্তর খুঁজে পাওয়া যায়নি।"
+Answer the question **only** based on the context provided below.  
+If the answer is not found in the context, respond with: **"উত্তর খুঁজে পাওয়া যায়নি!"**
 
-Context:
+📘 Context:
 {context}
 
-History:
+🧠 Conversation History (if any):
 {history}
 
-Question:
+❓ Question:
 {question}
 
-Answer (বাংলা/English):
-""")
+📝 Answer (English/Bangla):
+""".strip())
 
 __all__ = ["RAG_PROMPT"]
