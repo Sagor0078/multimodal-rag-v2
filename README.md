@@ -68,6 +68,8 @@ Built with:
 ```
 git clone https://github.com/Sagor0078/multimodal-rag-v2.git
 cd multimodal-rag-v2
+uv init
+uv sync 
 ```
 - [uv docs](https://docs.astral.sh/uv)
 - Preprocess the PDF (chunks + FAISS index)
@@ -79,3 +81,9 @@ env PYTHONPATH=. uv run python3 app/run_preprocess.py
 uv run uvicorn main:app --reload
 ```
 ---
+
+## demo 
+[![Directory docs](docs/opeapischema.png)](https://github.com/Sagor0078/multimodal-rag-v2/)
+
+---
+
