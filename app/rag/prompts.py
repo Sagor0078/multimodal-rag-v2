@@ -1,6 +1,9 @@
-from langchain_core.prompts import ChatPromptTemplate
 
-RAG_PROMPT = ChatPromptTemplate.from_template("""
+from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
+
+RAG_PROMPT = ChatPromptTemplate.from_messages([
+    # System Instruction
+    ("system", """
 Answer the question **only** based on the context provided below.  
 If the answer is not found in the context, respond with: **"উত্তর খুঁজে পাওয়া যায়নি!"**
 
@@ -9,11 +12,15 @@ If the answer is not found in the context, respond with: **"উত্তর খ�
 
 🧠 Conversation History (if any):
 {history}
+""".strip()),
 
-❓ Question:
-{question}
+    # Example
+    ("human", "❓ Question:\nবিয়ের সময় কল্যাণীর প্রকৃত বয়স কত ছিল?"),
+    ("ai", "📝 Answer (English/Bangla):\n১৫ বছর"),
 
-📝 Answer (English/Bangla):
-""".strip())
+    # User Question Placeholder
+    ("human", "❓ Question:\n{question}"),
+    ("ai", "📝 Answer (English/Bangla):"),
+])
 
 __all__ = ["RAG_PROMPT"]
